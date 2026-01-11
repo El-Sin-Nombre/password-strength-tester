@@ -45,29 +45,45 @@
     <input type="password" id="password" placeholder="Votre mot de passe">
 
     <div id="result">Résultat : —</div>
+
+    <ul id="details" style="text-align:left; margin-top:20px;"></ul>
+
   </div>
 
   <script>
   const passwordInput = document.getElementById("password");
   const result = document.getElementById("result");
+  const details = document.getElementById("details");
 
   passwordInput.addEventListener("input", function () {
     const password = passwordInput.value;
 
-    let strength = 0;
+    details.innerHTML = "";
 
-    if (password.length >= 8) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    const checks = [
+      { label: "Au moins 8 caractères", test: password.length >= 8 },
+      { label: "Une majuscule (A-Z)", test: /[A-Z]/.test(password) },
+      { label: "Un chiffre (0-9)", test: /[0-9]/.test(password) },
+      { label: "Un symbole (!@#$...)", test: /[^A-Za-z0-9]/.test(password) }
+    ];
+
+    let score = 0;
+
+    checks.forEach(check => {
+      const li = document.createElement("li");
+      li.textContent = (check.test ? "✅ " : "❌ ") + check.label;
+      details.appendChild(li);
+      if (check.test) score++;
+    });
 
     if (password.length === 0) {
       result.textContent = "Résultat : —";
       result.style.color = "#000";
-    } else if (strength <= 1) {
+      details.innerHTML = "";
+    } else if (score <= 1) {
       result.textContent = "❌ Mot de passe faible";
       result.style.color = "red";
-    } else if (strength <= 3) {
+    } else if (score <= 3) {
       result.textContent = "⚠️ Mot de passe moyen";
       result.style.color = "orange";
     } else {
@@ -76,6 +92,7 @@
     }
   });
 </script>
+
 
 
 </body>
