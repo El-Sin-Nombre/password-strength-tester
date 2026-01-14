@@ -5,41 +5,74 @@
   <title>Testeur de mot de passe</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f4f8;
-      margin: 0;
-      padding: 0;
-    }
+   
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e0ecff, #fdfbff);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 
-    .container {
-      max-width: 500px;
-      margin: 80px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+.container {
+  max-width: 500px;
+  margin: 80px auto;
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  text-align: center;
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      font-size: 1em;
-      margin-top: 15px;
-    }
+h1 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.9em;
+}
 
-    #result {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
+p {
+  color: #555;
+  font-size: 0.95em;
+}
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-  </style>
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1em;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6c9cff;
+  box-shadow: 0 0 0 3px rgba(108,156,255,0.25);
+}
+
+#result {
+  margin-top: 22px;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 18px;
+}
+
+ul li {
+  margin: 6px 0;
+  font-size: 0.95em;
+}
+
+#strength-bar {
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+</style>
+
 </head>
 
 <body>
